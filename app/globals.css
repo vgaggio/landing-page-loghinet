@@ -38,41 +38,6 @@
   --sidebar-ring: #2f8fc5;
 }
 
-.dark {
-  --background: #05111b;
-  --foreground: #dceeff;
-  --card: #0b1e2d;
-  --card-foreground: #dceeff;
-  --popover: #0b1e2d;
-  --popover-foreground: #dceeff;
-  --primary: #5aa6d8;
-  --primary-foreground: #041019;
-  --secondary: #2f8fc5;
-  --secondary-foreground: #dceeff;
-  --muted: #112739;
-  --muted-foreground: #8dbedc;
-  --accent: #1c3850;
-  --accent-foreground: #dceeff;
-  --destructive: #f97070;
-  --destructive-foreground: #2b0707;
-  --border: #17324b;
-  --input: #17324b;
-  --ring: #5aa6d8;
-  --chart-1: #5aa6d8;
-  --chart-2: #2f8fc5;
-  --chart-3: #1c3850;
-  --chart-4: #93cdef;
-  --chart-5: #b8dcf0;
-  --sidebar: #0b1e2d;
-  --sidebar-foreground: #dceeff;
-  --sidebar-primary: #5aa6d8;
-  --sidebar-primary-foreground: #041019;
-  --sidebar-accent: #1c3850;
-  --sidebar-accent-foreground: #dceeff;
-  --sidebar-border: #17324b;
-  --sidebar-ring: #5aa6d8;
-}
-
 @theme inline {
   /* optional: --font-sans, --font-serif, --font-mono if they are applied in the layout.tsx */
   --color-background: var(--background);
