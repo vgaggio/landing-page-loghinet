@@ -11,53 +11,94 @@ import {
   DialogTitle,
 } from "@/components/dialog";
 
+interface Supervisor {
+  name: string;
+  phone: string;
+  area?: string;
+}
+
+interface Location {
+  name: string;
+  supervisors: Supervisor[];
+}
+
 export function LocationsSection() {
-  const locations = [
+  const locations: Location[] = [
     {
       name: "Córdoba",
-      addresses: [
-        "9 de Julio N°1",
-        "Av Fuerza Aérea 1700",
-        "Dinosaurio Mall PB - Local 5",
-        "Av. Sabattini 3250 - Hiper Libertad - Local 40",
-        "General Paz 98",
-        "Mauricio Yadarola 1699",
-        "Walmart Talleres - Local 2",
-        "Ricardo Rojas 7571",
-        "Paseo Rivera Indarte - Local 180",
-      ],
+      supervisors: [{ name: "Nelson Moreno", phone: "351 379 0039" }],
     },
     {
       name: "Tucumán",
-      addresses: [
-        "Av Néstor Kirchner 3440 - Local 100",
-        "Castelar esq Suipacha - Local 550",
-        "Maipu 187",
-      ],
+      supervisors: [{ name: "Jordán Herrera", phone: "381 574 2774" }],
     },
     {
       name: "Jujuy",
-      addresses: ["Sixto Ovejero esq. Jujuy (Ledesma)", "Rogelio Lean 157"],
+      supervisors: [{ name: "Matías Vargas", phone: "388 682 9333" }],
     },
     {
       name: "Catamarca",
-      addresses: ["Rivadavia 501", "Salta 540"],
+      supervisors: [{ name: "Guillermo Rodríguez", phone: "351 323 7969" }],
     },
     {
       name: "Salta",
-      addresses: ["Hiper Libertad: Av. Tavella - Local 441", "Florida 304"],
+      supervisors: [{ name: "Matías Castillo", phone: "387 458 3958" }],
     },
     {
       name: "La Rioja",
-      addresses: ["San Nicolás de Bari 666"],
+      supervisors: [{ name: "Guillermo Rodríguez", phone: "351 323 7969" }],
+    },
+    {
+      name: "Mendoza",
+      supervisors: [{ name: "Gabriel Viscaino", phone: "261 632 7130" }],
+    },
+    {
+      name: "Buenos Aires",
+      supervisors: [
+        {
+          name: "Javier Rodríguez",
+          phone: "332 961 4828",
+          area: "AMBA Norte",
+        },
+        {
+          name: "Luciano Peralta",
+          phone: "236 438 8890",
+          area: "Buenos Aires Centro",
+        },
+        {
+          name: "Ignacio Villafañe",
+          phone: "291 643 7073",
+          area: "Costa Atlántica",
+        },
+      ],
+    },
+    {
+      name: "Río Negro",
+      supervisors: [{ name: "Carlos Ganin", phone: "298 459 3480" }],
+    },
+    {
+      name: "Neuquén",
+      supervisors: [{ name: "Carlos Ganin", phone: "298 459 3480" }],
+    },
+    {
+      name: "Chubut",
+      supervisors: [{ name: "Juan Cruz Oviedo", phone: "291 511 5410" }],
+    },
+    {
+      name: "Santa Cruz",
+      supervisors: [{ name: "Juan Cruz Oviedo", phone: "291 511 5410" }],
+    },
+    {
+      name: "Tierra del Fuego",
+      supervisors: [{ name: "Juan Cruz Oviedo", phone: "291 511 5410" }],
     },
   ];
-  const [selectedLocation, setSelectedLocation] = useState<
-    (typeof locations)[number] | null
-  >(null);
+  const [selectedLocation, setSelectedLocation] = useState<Location | null>(
+    null
+  );
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
-  const handleOpen = (location: (typeof locations)[number]) => {
+  const handleOpen = (location: Location) => {
     setSelectedLocation(location);
     setIsDialogOpen(true);
   };
@@ -83,7 +124,7 @@ export function LocationsSection() {
             </h2>
           </div>
           <h3 className="text-4xl md:text-5xl font-black text-foreground mb-6 text-balance">
-            Presencia donde nos necesites.
+            ¿Tenes un comercio y necesitas contactarnos?
           </h3>
           <p className="text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto">
             Contamos con oficinas y equipos técnicos en las siguientes
@@ -91,29 +132,20 @@ export function LocationsSection() {
           </p>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 max-w-3xl mx-auto">
+        <div className="flex flex-wrap justify-center gap-4 max-w-3xl mx-auto">
           {locations.map((location, index) => (
             <button
               key={index}
               type="button"
               onClick={() => handleOpen(location)}
-              className="bg-card/90 border border-border/60 rounded-2xl p-6 text-center shadow-sm transition-all hover:-translate-y-1 hover:shadow-md hover:border-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background cursor-pointer"
+              className="basis-[calc(50%-0.5rem)] md:basis-[calc(33.333%-0.666rem)] bg-card/90 border border-border/60 rounded-2xl p-6 text-center shadow-sm transition-all hover:-translate-y-1 hover:shadow-md hover:border-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background cursor-pointer"
             >
               <div className="text-2xl font-black">{location.name}</div>
               <span className="mt-2 block text-sm font-semibold text-muted-foreground">
-                Ver direcciones
+                Ver supervisores del Área
               </span>
             </button>
           ))}
-        </div>
-
-        <div className="mt-12 text-center">
-          <a
-            href="mailto:rr.hh@newsmart.com.ar"
-            className="text-primary hover:underline font-bold text-lg"
-          >
-            rr.hh@newsmart.com.ar
-          </a>
         </div>
       </div>
 
@@ -129,20 +161,30 @@ export function LocationsSection() {
         <DialogContent>
           <DialogHeader>
             <DialogTitle>
-              {selectedLocation ? `Locales en ${selectedLocation.name}` : ""}
+              {selectedLocation
+                ? `Supervisores en ${selectedLocation.name}`
+                : ""}
             </DialogTitle>
             <DialogDescription>
-              Elegí la sucursal que te quede más cómoda.
+              Elegí contactarte con el asesor correspondiente
             </DialogDescription>
           </DialogHeader>
           {selectedLocation && (
             <ul className="space-y-3">
-              {selectedLocation.addresses.map((address, idx) => (
+              {selectedLocation.supervisors.map((supervisor, idx) => (
                 <li
                   key={idx}
-                  className="rounded-lg border border-border/60 bg-background/80 px-4 py-3 text-left text-sm text-muted-foreground shadow-sm"
+                  className="flex flex-col rounded-lg border border-border/60 bg-background/80 px-4 py-3 text-left text-sm text-muted-foreground shadow-sm"
                 >
-                  {address}
+                  <div className="flex justify-between items-center w-full">
+                    <span className="font-bold text-card-foreground">
+                      {supervisor.name}
+                    </span>
+                    <span className="text-right">{supervisor.phone}</span>
+                  </div>
+                  {"area" in supervisor && (
+                    <span className="text-xs mt-1">{supervisor.area}</span>
+                  )}
                 </li>
               ))}
             </ul>

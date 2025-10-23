@@ -1,7 +1,6 @@
 const highlights = [
-  "Buen clima laboral",
-  "Vínculos positivos",
-  "Oportunidad de crecimiento",
+  "13 Provincias",
+  "57.000 Clientes"
 ];
 
 export function AboutSection() {
@@ -15,18 +14,18 @@ export function AboutSection() {
             </h2>
           </div>
           <h3 className="text-4xl md:text-5xl font-black text-foreground mb-6 text-balance">
-            Tu socio en telecomunicaciones
+            Operadores logísticos de Telecom Personal S.A.
           </h3>
           <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
-            Somos un agente oficial de Telecom Personal dedicado a la venta de
-            teléfonos celulares, accesorios y soluciones digitales pensadas para
-            cada necesidad. Con presencia física y un canal online, acompañamos
-            a personas y empresas con asesoramiento profesional y un equipo que
-            impulsa relaciones humanas positivas y crecimiento constante.
+            Nos encargamos de efectuar la logística de última milla de los ip
+            pre pago en todo el canal tradicional. Atendemos las siguientes
+            provincias: Jujuy, Salta, Tucumán, Catamarca, La Rioja, Mendoza,
+            Córdoba, Bs As, Río Negro, Neuquén, Chubut, Santa Cruz y Tierra del
+            Fuego. Llegando a más de 57.000 comercios.
           </p>
         </div>
 
-        <div className="grid gap-4 md:grid-cols-3 max-w-4xl mx-auto">
+        <div className="grid gap-4 md:grid-cols-2 max-w-4xl mx-auto">
           {highlights.map((title) => (
             <div
               key={title}

@@ -13,12 +13,6 @@ export function HeroSection() {
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-4xl mx-auto text-center">
-          <div className="inline-flex items-center gap-2 bg-accent px-5 py-2 mb-6 rounded-lg">
-            <span className="text-sm font-bold text-accent-foreground uppercase tracking-wide">
-              Soluciones de Telecomunicaciones
-            </span>
-          </div>
-
           <h1 className="text-5xl md:text-7xl font-black text-foreground mb-6 leading-tight text-balance">
             Bienvenido a Loghinet Soluciones S.R.L
           </h1>
@@ -26,10 +20,7 @@ export function HeroSection() {
           <div className="grid grid-cols-2 gap-6 mt-16 max-w-2xl mx-auto">
             <div className="rounded-2xl border border-border/60 bg-background/80 p-6 shadow-sm backdrop-blur">
               <div className="text-3xl md:text-4xl font-black text-primary mb-2">
-                Todo el País
-              </div>
-              <div className="text-sm text-muted-foreground font-medium">
-                Puntos de Venta
+                Estamos en todo el País
               </div>
             </div>
             <div className="rounded-2xl border border-border/60 bg-background/80 p-6 shadow-sm backdrop-blur">
