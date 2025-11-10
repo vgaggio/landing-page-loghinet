@@ -17,7 +17,7 @@ export function AboutSection() {
             Operadores logísticos de Telecom Personal S.A.
           </h3>
           <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
-            Nos encargamos de efectuar la logística de última milla de los ip
+            Nos encargamos de efectuar la logística de última milla de los SIM
             pre pago en todo el canal tradicional. Atendemos las siguientes
             provincias: Jujuy, Salta, Tucumán, Catamarca, La Rioja, Mendoza,
             Córdoba, Bs As, Río Negro, Neuquén, Chubut, Santa Cruz y Tierra del

@@ -93,14 +93,19 @@ export function LocationsSection() {
       supervisors: [{ name: "Juan Cruz Oviedo", phone: "291 511 5410" }],
     },
   ];
-  const [selectedLocation, setSelectedLocation] = useState<Location | null>(
-    null
-  );
+
+  const [selectedLocation, setSelectedLocation] = useState<Location | null>(null);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
   const handleOpen = (location: Location) => {
     setSelectedLocation(location);
     setIsDialogOpen(true);
+  };
+
+  const formatPhoneForWhatsApp = (phone: string) => {
+    // Elimina espacios y agrega el prefijo de país +54
+    const cleaned = phone.replace(/\s+/g, "");
+    return `https://wa.me/549${cleaned}`;
   };
 
   return (
@@ -127,8 +132,7 @@ export function LocationsSection() {
             ¿Tenes un comercio y necesitas contactarnos?
           </h3>
           <p className="text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto">
-            Contamos con oficinas y equipos técnicos en las siguientes
-            provincias.
+            Contamos con oficinas y equipos técnicos en las siguientes provincias.
           </p>
         </div>
 
@@ -153,9 +157,7 @@ export function LocationsSection() {
         open={isDialogOpen}
         onOpenChange={(open) => {
           setIsDialogOpen(open);
-          if (!open) {
-            setSelectedLocation(null);
-          }
+          if (!open) setSelectedLocation(null);
         }}
       >
         <DialogContent>
@@ -169,6 +171,7 @@ export function LocationsSection() {
               Elegí contactarte con el asesor correspondiente
             </DialogDescription>
           </DialogHeader>
+
           {selectedLocation && (
             <ul className="space-y-3">
               {selectedLocation.supervisors.map((supervisor, idx) => (
@@ -180,7 +183,14 @@ export function LocationsSection() {
                     <span className="font-bold text-card-foreground">
                       {supervisor.name}
                     </span>
-                    <span className="text-right">{supervisor.phone}</span>
+                    <a
+                      href={formatPhoneForWhatsApp(supervisor.phone)}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-right text-primary hover:underline font-semibold"
+                    >
+                      {supervisor.phone}
+                    </a>
                   </div>
                   {"area" in supervisor && (
                     <span className="text-xs mt-1">{supervisor.area}</span>

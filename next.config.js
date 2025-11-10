@@ -1,11 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  typescript: {
-    ignoreBuildErrors: true,
-  },
-  images: {
-    unoptimized: true,
-  },
+  output: 'export',
+  images: { unoptimized: true },
+  trailingSlash: true,
+  // si tu dominio no está en raíz (por ejemplo /loghinet/)
+  // basePath: '/loghinet',
+  // assetPrefix: '/loghinet/',
 }
-
-export default nextConfig
+module.exports = nextConfig
